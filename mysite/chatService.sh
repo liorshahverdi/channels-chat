@@ -7,7 +7,7 @@ start() {
 
 stop() {
 	docker stop $(docker ps | tail -n1 | awk '{print $1}')
-	echo 'stopped redis.'
+	kill $(ps -ef | grep runserver | head -n1 | awk '{print $2}')
 }
 
 case "$1" in
